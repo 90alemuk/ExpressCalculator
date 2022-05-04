@@ -1,26 +1,20 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building...'
-            }
-        }
-    
-   
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-            }
-        }
-  
-    
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-            }
-        }
-
-}
+	agent none
+		stages ('build') {
+		 steps {
+		  npm install
+		 }
+		}
+		stages ('integration-tests') {
+		 steps {
+		  npm run unit-test
+		 }
+		}
+		stages ('unit-tests') {
+		 steps {
+		  npm run integration-test
+		 }
+		}
+			
+		}
 }
