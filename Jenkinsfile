@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage ('integration-tests') {
                  when {
-                        anyof {
+                        anyOf {
                         branch 'develop'
                         branch 'main'
                         }
@@ -24,7 +24,7 @@ pipeline {
                 }
 		stage ('e2e-tests') {
 		 when {
-		 	anyof {
+		 	anyOf {
 			branch 'main'
 			}
 		 }		
