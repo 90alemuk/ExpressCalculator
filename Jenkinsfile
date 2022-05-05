@@ -22,7 +22,7 @@ pipeline {
                         sh 'npm run integration-test'
                          }
                 }
-		stage {'e2e-tests') {
+		stage ('e2e-tests') {
 		 when {
 		 	anyof {
 			branch 'main'
