@@ -40,8 +40,11 @@ pipeline {
                         }
 		 }
 		 steps {
-		  script { docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-			   def image = docker.build("90alemuk/express-calculator:${env.BUILD_ID}")
+		  script { 
+			   def dockerHome = tool 'Docker'
+			   env.PATH = "${dockerHome}/bin:${env.PATH}"
+			   
+			   docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {				def image = docker.build("90alemuk/express-calculator:${env.BUILD_ID}")
 			   image.push()
 			}
 		  }
