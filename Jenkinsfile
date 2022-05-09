@@ -39,10 +39,12 @@ pipeline {
                         branch 'main'
                         }
 		 }
+		 steps {
 			docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
 			 def image = docker.build("90alemuk/express-calculator:${env.BUILD_ID}")
 			 image.push()
 			}
+		 }
 		}
 }
 }		
