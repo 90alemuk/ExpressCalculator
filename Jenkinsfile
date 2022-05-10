@@ -59,8 +59,8 @@ pipeline {
 		 }                        
 
 			steps {
-                       	sh 'heroku container:push web'
-			sh 'heroku container:release web'
+                       	sh 'heroku container:push web --app=floating-savannah-51290'
+			sh 'heroku container:release web --app=floating-savannah-51290'
 			}
 
                 }
