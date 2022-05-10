@@ -59,6 +59,7 @@ pipeline {
 		 }                        
 
 			steps {
+			sh 'docker login --username=username --password=$HEROKU_API_KEY registry.heroku.com'
                        	sh 'heroku container:push web --app=floating-savannah-51290'
 			sh 'heroku container:release web --app=floating-savannah-51290'
 			}
